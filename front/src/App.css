@@ -1,0 +1,37 @@
+.App {
+  text-align: center;
+}
+
+.logo {
+  width: 150px;
+}
+
+/* .logo_search_bar {
+  display: flex;
+  justify-content: space-around;
+} */
+
+.ispis th,td {
+  border:1px solid black;
+  line-height: 40px;
+}
+
+.td_id {
+  min-width: 80px;
+  border:1px solid black;
+}
+
+.td_info {
+  min-width: 150px;
+  border:1px solid black;
+}
+
+.td_email {
+  min-width: 230px;
+  border:1px solid black;
+}
+
+ .product_render img {
+ width: 12rem;
+} 
+
