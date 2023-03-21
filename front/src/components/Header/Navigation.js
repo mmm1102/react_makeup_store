@@ -1,8 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+
 
 const Navigation = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
+  const nav = useNavigate();
+ 
+
+
+
+  const logout = () => {
+    setCookies("access_token", "");
+    window.localStorage.removeItem("userID");
+    nav("/login");
+  }
+
+
   return (
     <div className="container">
       <nav className="navbar navbar-expand-md navbar-light">
@@ -25,13 +39,22 @@ const Navigation = () => {
             <NavLink className="nav-item nav-link" to="/products">
               Products
             </NavLink>
-            <NavLink className="nav-item nav-link" to="/login">
-              Log in
-            </NavLink>
+            {!cookies.access_token ? (
+              <>
+                <NavLink className="nav-item nav-link" to="/login">
+                  Log in
+                </NavLink>
 
-            <NavLink className="nav-item nav-link" to="/register">
-              Register
-            </NavLink>
+                <NavLink className="nav-item nav-link" to="/register">
+                  Register
+                </NavLink>
+              </>
+            ) : (
+              <NavLink onClick={logout} className="nav-item nav-link">Log out</NavLink>
+            )}
+<NavLink className="nav-item nav-link" to="/admin_dashboard">
+Admin Dashboard
+</NavLink>
             <NavLink className="nav-item nav-link" to="/cart">
               Cart
             </NavLink>

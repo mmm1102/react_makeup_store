@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-
 import { useNavigate } from "react-router-dom";
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,25 +14,24 @@ const Login = () => {
 
   const login = async () => {
     const data = { username: username, password: password };
+    
     try {
       const res = await axios.post("http://localhost:5500/auth/login", data);
-      // checkLogin(res.data);
-      alert("radi login")
       console.log(res.data);
-      setCookies("acces_token", res.data.token);
-      window.localStorage.setItem("userID", res.data.userID)
+     
+      alert("radi login");
+      setCookies("access_token", res.data.token);
+      window.localStorage.setItem("userID", res.data.userID);
       nav("/cart");
     } catch (err) {
-        console.error(err);
-      };
-      console.log(data);
+      console.error(err);
     }
-
-
+    console.log(data);
+  };
 
   return (
     <div className="col-md-4">
-      <h2 className="mb-4">Log in</h2>
+      <h3 className="mb-4">Log in</h3>
       <div>
         <div className="mb-3">
           <input
@@ -65,6 +65,5 @@ const Login = () => {
     </div>
   );
 };
-
 
 export default Login;

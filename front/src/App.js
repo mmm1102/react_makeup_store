@@ -11,6 +11,7 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import React from "react";
+import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/products" element={<Products></Products>}></Route>
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
+          <Route path="/admin_dashboard" element={<AdminDashboard></AdminDashboard>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
         
         </Routes>

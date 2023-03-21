@@ -13,7 +13,8 @@
 
 .ispis th,td {
   border:1px solid black;
-  line-height: 40px;
+  line-height: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .td_id {
@@ -29,6 +30,12 @@
 .td_email {
   min-width: 230px;
   border:1px solid black;
+}
+
+.td_btn {
+  border: none;
+  border-radius: 12px;
+  background-color: rgb(231, 91, 87);
 }
 
  .product_render img {

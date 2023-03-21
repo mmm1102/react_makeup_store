@@ -1,16 +1,7 @@
 import React from "react";
-// import axios from "axios";
-// import { useEffect, useState } from "react";
 
 const Cart = () => {
-  // const [users, setUsers] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get("http://localhost:5500/allUsers").then((response) => {
-  //     console.log(response.data.data);
-  //     setUsers(response.data.data);
-  //   });
-  // }, []);
 
   return (
     <div>

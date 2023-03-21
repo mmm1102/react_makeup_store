@@ -1,10 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
+import { productRouter } from "./routes/products.js";
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
-const port = process.env.PORT || 5500;
+const PORT = 5500;
 
 //Middleware functions
 app.use(express.json());
@@ -18,12 +19,16 @@ app.use((req, res, next) => {
   next();
 });
 
+//users
 app.use("/auth", userRouter);
+app.use("/products", productRouter);
 
 mongoose
   .connect(process.env.REACT_APP_MONGODB_URL)
   .then(() => {
-    app.listen(port, () => console.log(`Server running on port ${port}`));
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+
 

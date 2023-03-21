@@ -24,7 +24,7 @@ const Register = () => {
 
   return (
     <div className="col-md-4">
-      <h2 className="mb-4">Register your account</h2>
+      <h3 className="mb-4">Register your account</h3>
       <form onSubmit={handleSubmit(onFormSubmit, onErrors)}>
         <div className="mb-3">
           <input

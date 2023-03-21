@@ -7,14 +7,14 @@ const Products = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await axios.get("http://localhost:5500/allProducts");
-      setProducts(res.data.data);
+      const res = await axios.get("http://localhost:5500/products");
+      setProducts(res.data);
     };
     fetchProducts();
   }, []);
   return (
     <div>
-      <p>Ovo je stranica sa proizvodima</p>
+     
       {products.map((e) => {
         return (
           <div className="card product_render">
