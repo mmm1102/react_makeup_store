@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
+import MyProfile from "./pages/MyProfile";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -29,6 +30,7 @@ function App() {
           <Route path="/register" element={<Register></Register>}></Route>
           <Route path="/admin_dashboard" element={<AdminDashboard></AdminDashboard>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
+          <Route path="/my_profile" element={<MyProfile></MyProfile>}></Route>
         
         </Routes>
         </div>

@@ -2,6 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useGetUserID } from "../../hooks/useGetUserID";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
@@ -63,6 +65,7 @@ const Navigation = () => {
             <NavLink className="nav-item nav-link" to="/cart">
               Cart
             </NavLink>
+            <NavLink className="nav-item nav-link" to="/my_profile">My Profile <FontAwesomeIcon icon={faUser} className="highlight" /></NavLink>
           </div>
         </div>
       </nav>
