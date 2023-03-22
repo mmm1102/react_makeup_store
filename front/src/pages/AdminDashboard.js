@@ -14,34 +14,52 @@ const AdminDashboard = () => {
       setUsers(res.data);
     }
     fetchUsers();
-  })
+  },)
+
+
+  const removeUser = async (id) => {
+console.log(id);
+    try {
+      const res = await axios.delete(`http://localhost:5500/auth/${id}` );
+      console.log(res.data);
+      alert("User deleted");
+    }catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <div>
       <h3>Amin Dashboard</h3>
       <h5>Welcome administrator <FontAwesomeIcon icon={faAddressCard} /> </h5>
       <div className="ispis">
       <table>
+      <tbody>
         <tr>
-          <th className="td_id">id</th>
-          <th className="td_info">firstName</th>
-          <th className="td_info">lastName</th>
-          <th className="td_email">email</th>
-          <th className="td_info">username</th>
-          <th className="td_info">Remove customer</th>
+          <th className="td_id">Customer ID</th>
+          <th className="td_info">First name</th>
+          <th className="td_info">Last name</th>
+          <th className="td_email">e-mail</th>
+          <th className="td_info">Username</th>
+          <th className="td_info_btn">Remove customer</th>
         </tr>
+        </tbody>
         </table>
 
-        {users.map((elem) => {
+        {users.map((elem,index) => {
           return (
-            <table>
-              <td className="td_id" key={elem.id}>{elem.id}</td>
+            <table key={index}>
+            <tbody>
+            <tr>
+              <td className="td_id" key={elem.id}>{elem._id}</td>
 
               <td className="td_info" key={elem.id}>{elem.firstName}</td>
 
               <td className="td_info" key={elem.id}>{elem.lastName}</td>
               <td className="td_email" key={elem.id}>{elem.email}</td>
               <td className="td_info" key={elem.id}>{elem.username}</td>
-              <td className='td_info' key={elem.id}><button className='td_btn'><FontAwesomeIcon icon={faUserXmark} /></button></td>
+              <td className='td_info_btn' key={elem.id}><button className='td_btn' onClick={() => removeUser(elem._id)}><FontAwesomeIcon icon={faUserXmark} /></button></td>
+              </tr>
+              </tbody>
             </table>
           );
         })}

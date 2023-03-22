@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/User.js";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 dotenv.config();
 
 const router = express.Router();
@@ -64,11 +65,49 @@ router.post("/login", async (req, res) => {
 router.get("/all_users", async (req, res) => {
   try {
     const response = await UserModel.find({});
-    res.json(response);
+    res.status(200).json(response);
   }
   catch (err) {
-    req.json(err);
+    res.status(500).json(err);
     console.log(err);
+  }
+})
+
+//delete user
+router.delete("/:id", async (req, res) => {
+  const {id} = req.params;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)){
+      return res.status(404).json({ message: `No user exist with id: ${id}` });
+    }
+    await UserModel.findByIdAndRemove(id);
+    res.json({message: "User deleted from database"})
+  }catch (err) {
+    res.status(404).json({message: "Something went wrong"})
+  }
+})
+
+
+//update user
+router.patch("/:id", async (req, res) => {
+  const {id} = req.params;
+  const {firstName, lastName, email, username, password} = req.body;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ message: `No user exist with id: ${id}` });
+    }
+    const updatedUser = {
+      firstName,
+      lastName,
+      email,
+      username,
+      password,
+      _id: id,
+    }
+    await UserModel.findByIdAndUpdate(id, updatedUser);
+    res.json(updatedUser);
+  }catch (err) {
+    res.status(500).json({ message: "Something went wrong" });
   }
 })
 

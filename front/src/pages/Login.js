@@ -22,7 +22,7 @@ const Login = () => {
       alert("radi login");
       setCookies("access_token", res.data.token);
       window.localStorage.setItem("userID", res.data.userID);
-      nav("/cart");
+      nav("/");
     } catch (err) {
       console.error(err);
     }

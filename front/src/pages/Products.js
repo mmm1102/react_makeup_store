@@ -22,7 +22,7 @@ const Products = () => {
               className="card-img-top"
               key={e.id}
               src={e.img}
-              alt="Card image cap"
+              alt={e.productName}
             />
             <div className="card-body">
               <h5 className="card-title">Card title</h5>
@@ -30,7 +30,7 @@ const Products = () => {
                 {e.productName}
               </p>
               <p className="card-text" key={e.id}>{e.brand}</p>
-              <p className="card-text" key={e.id}>{e.price}</p>
+              <p className="card-text" key={e.id}>{e.price}$</p>
               <button className="btn btn-primary"> Add to cart</button>
             </div>
           </div>

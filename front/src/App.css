@@ -18,12 +18,16 @@
 }
 
 .td_id {
-  min-width: 80px;
+  min-width: 220px;
   border:1px solid black;
 }
 
 .td_info {
   min-width: 150px;
+  border:1px solid black;
+}
+.td_info_btn {
+  min-width: 130px;
   border:1px solid black;
 }
 
@@ -35,7 +39,7 @@
 .td_btn {
   border: none;
   border-radius: 12px;
-  background-color: rgb(231, 91, 87);
+  background-color: rgb(232, 86, 66);
 }
 
  .product_render img {

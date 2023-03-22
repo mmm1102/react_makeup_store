@@ -1,21 +1,19 @@
 import { NavLink } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-
+import { useGetUserID } from "../../hooks/useGetUserID";
 
 const Navigation = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
+  const userID = useGetUserID();
+  const adminID = userID;
   const nav = useNavigate();
- 
-
-
 
   const logout = () => {
     setCookies("access_token", "");
     window.localStorage.removeItem("userID");
     nav("/login");
-  }
-
+  };
 
   return (
     <div className="container">
@@ -50,11 +48,18 @@ const Navigation = () => {
                 </NavLink>
               </>
             ) : (
-              <NavLink onClick={logout} className="nav-item nav-link">Log out</NavLink>
+              <NavLink onClick={logout} className="nav-item nav-link">
+                Log out
+              </NavLink>
             )}
-<NavLink className="nav-item nav-link" to="/admin_dashboard">
-Admin Dashboard
-</NavLink>
+            {adminID ? (
+              <NavLink className="nav-item nav-link" to="/admin_dashboard">
+                Admin Dashboard
+              </NavLink>
+            ) : (
+              <></>
+            )}
+
             <NavLink className="nav-item nav-link" to="/cart">
               Cart
             </NavLink>
