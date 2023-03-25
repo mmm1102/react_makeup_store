@@ -66,50 +66,59 @@ router.get("/all_users", async (req, res) => {
   try {
     const response = await UserModel.find({});
     res.status(200).json(response);
-  }
-  catch (err) {
+  } catch (err) {
     res.status(500).json(err);
     console.log(err);
   }
-})
+});
+
+//show one user
+router.get("/users/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ message: `No user exist with id: ${id}` });
+    }
+    const user = await UserModel.findById(id);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(404).json({ message: "Something went wrong" });
+  }
+});
 
 //delete user
 router.delete("/:id", async (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   try {
-    if (!mongoose.Types.ObjectId.isValid(id)){
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ message: `No user exist with id: ${id}` });
     }
     await UserModel.findByIdAndRemove(id);
-    res.json({message: "User deleted from database"})
-  }catch (err) {
-    res.status(404).json({message: "Something went wrong"})
+    res.json({ message: "User deleted from database" });
+  } catch (err) {
+    res.status(404).json({ message: "Something went wrong" });
   }
-})
-
+});
 
 //update user
-router.patch("/:id", async (req, res) => {
-  const {id} = req.params;
-  const {firstName, lastName, email, username, password} = req.body;
+router.patch("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const { username, password, email } = req.body;
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ message: `No user exist with id: ${id}` });
     }
     const updatedUser = {
-      firstName,
-      lastName,
-      email,
+      
       username,
       password,
-      _id: id,
-    }
+      email
+    };
     await UserModel.findByIdAndUpdate(id, updatedUser);
     res.json(updatedUser);
-  }catch (err) {
+  } catch (err) {
     res.status(500).json({ message: "Something went wrong" });
   }
-})
-
+});
 
 export { router as userRouter };

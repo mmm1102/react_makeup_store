@@ -1,15 +1,14 @@
 .App {
   text-align: center;
+  
+
+  
 }
 
 .logo {
   width: 150px;
 }
 
-/* .logo_search_bar {
-  display: flex;
-  justify-content: space-around;
-} */
 
 .ispis th,td {
   border:1px solid black;
@@ -26,6 +25,25 @@
   min-width: 150px;
   border:1px solid black;
 }
+
+.td_img {
+  width:80px;
+  border:1px solid black;
+}
+.td_img img {
+  width: 40px;
+}
+
+.td_category {
+  min-width: 120px;
+  border:1px solid black;
+}
+
+.td_price {
+  width: 60px;
+  border:1px solid black;
+}
+
 .td_info_btn {
   min-width: 130px;
   border:1px solid black;
@@ -42,10 +60,20 @@
   background-color: rgb(232, 86, 66);
 }
 
+.products_table {
+  margin: 0 auto;
+}
+
+
  .product_render img {
  width: 12rem;
 } 
 
 .highlight {
   color: dodgerblue;
+}
+
+#user_name {
+  color: rgb(47, 255, 85);
+  font-size: 1.2rem;
 }

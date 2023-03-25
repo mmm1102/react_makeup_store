@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
-//users
+
 app.use("/auth", userRouter);
 app.use("/products", productRouter);
 

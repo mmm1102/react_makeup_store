@@ -7,12 +7,13 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import MyProfile from "./pages/MyProfile";
+import ProductDetails from "./components/Main/ProductDetails";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import React from "react";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           <Route path="/admin_dashboard" element={<AdminDashboard></AdminDashboard>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/my_profile" element={<MyProfile></MyProfile>}></Route>
-        
+          <Route path="/product_details" element={<ProductDetails></ProductDetails>}></Route>
         </Routes>
         </div>
         {/* <Main /> */}

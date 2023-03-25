@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -24,6 +24,7 @@ const Login = () => {
       window.localStorage.setItem("userID", res.data.userID);
       nav("/");
     } catch (err) {
+      alert("ne radi")
       console.error(err);
     }
     console.log(data);
