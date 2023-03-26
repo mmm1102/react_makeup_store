@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { userRouter } from "./routes/users.js";
 import { productRouter } from "./routes/products.js";
+
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -29,6 +30,4 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
-
-
 

@@ -22,7 +22,7 @@ const Navigation = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-md navbar-light mb-3">
+      <nav className="navbar navbar-expand-lg navbar-light mb-3">
         <button
           className="navbar-toggler"
           type="button"

@@ -2,17 +2,27 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/User.js";
+// import loginSchema from "../validation/LoginValidation.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import {validateLogin} from "../middleware/validator.js"
 dotenv.config();
 
 const router = express.Router();
 
 //register
 router.post("/register", async (req, res) => {
-  const { firstName, lastName, email, username, password } = req.body;
+  const { firstName, lastName, email, username, password, confirmPassword } = req.body;
+  const {error, value} = validateLogin(req.body)
+  if(error){
+    console.log(error);
+    return res.send(error.details)
+  }
+
+
   try {
     const user = await UserModel.findOne({ username });
+
 
     if (user) {
       return res.status(400).json({ message: "User already exists" });
@@ -25,7 +35,9 @@ router.post("/register", async (req, res) => {
       email,
       username,
       password: hashedPassword,
+      confirmPassword
     });
+
     await newUser.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (err) {

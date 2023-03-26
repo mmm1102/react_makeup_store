@@ -34,6 +34,7 @@ const Register = () => {
             id="firstName"
             placeholder="First Name"
             {...register("firstName")}
+            required
           />
         </div>
 
@@ -45,6 +46,7 @@ const Register = () => {
             id="lastName"
             placeholder="Last Name"
             {...register("lastName")}
+            required
           />
         </div>
 
@@ -56,6 +58,7 @@ const Register = () => {
             id="email"
             placeholder="Email"
             {...register("email")}
+            required
           />
         </div>
 
@@ -67,6 +70,7 @@ const Register = () => {
             id="username"
             placeholder="Username"
             {...register("username")}
+            required
           />
         </div>
 
@@ -78,17 +82,19 @@ const Register = () => {
             id="password"
             placeholder="Password (min 8 characters)"
             {...register("password")}
+            required
           />
         </div>
 
         <div className="mb-3">
           <input
             type="password"
-            name="password2"
+            name="confirmPassword"
             className="form-control"
-            id="password2"
+            id="confirmPassword"
             placeholder="Confirm password"
-            {...register("password2")}
+            {...register("confirmPassword")}
+            required
           />
         </div>
 
