@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <div className="content d-flex justify-content-md-center">
+        <div className="content container d-flex justify-content-sm-center">
         <Routes>
        
        

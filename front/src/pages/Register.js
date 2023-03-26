@@ -2,9 +2,22 @@ import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
+// import schema from "../validation/registerValidationClient";
+
+
 
 const Register = () => {
-  const { register, handleSubmit } = useForm();
+  const schema = yup.object().shape({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required(),
+    email: yup.string().email().required(),
+    username: yup.string().min(8).max(20).required(),
+    password: yup.string().min(8).max(20).required(),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null])
+  }) 
+  const { register, handleSubmit, formState:{errors} } = useForm({resolver: yupResolver(schema),});
   const nav = useNavigate();
 
   const onFormSubmit = async (data) => {
@@ -20,12 +33,12 @@ const Register = () => {
   };
 
 
-  const onErrors = (errors) => console.log(errors);
+  // const onErrors = (errors) => console.log(errors);
 
   return (
     <div className="col-md-4">
       <h3 className="mb-4">Register your account</h3>
-      <form onSubmit={handleSubmit(onFormSubmit, onErrors)}>
+      <form onSubmit={handleSubmit(onFormSubmit)}>
         <div className="mb-3">
           <input
             type="text"
@@ -34,8 +47,10 @@ const Register = () => {
             id="firstName"
             placeholder="First Name"
             {...register("firstName")}
-            required
+         
+          
           />
+          <p>{errors.firstName?.message}</p>
         </div>
 
         <div className="mb-3">
@@ -46,8 +61,9 @@ const Register = () => {
             id="lastName"
             placeholder="Last Name"
             {...register("lastName")}
-            required
+     
           />
+          <p>{errors.lastName?.message}</p>
         </div>
 
         <div className="mb-3">
@@ -58,8 +74,9 @@ const Register = () => {
             id="email"
             placeholder="Email"
             {...register("email")}
-            required
+       
           />
+          <p>{errors.email?.message}</p>
         </div>
 
         <div className="mb-3">
@@ -70,8 +87,9 @@ const Register = () => {
             id="username"
             placeholder="Username"
             {...register("username")}
-            required
+      
           />
+          <p>{errors.username?.message}</p>
         </div>
 
         <div className="mb-3">
@@ -82,8 +100,9 @@ const Register = () => {
             id="password"
             placeholder="Password (min 8 characters)"
             {...register("password")}
-            required
+       
           />
+          <p>{errors.password?.message}</p>
         </div>
 
         <div className="mb-3">
@@ -94,8 +113,9 @@ const Register = () => {
             id="confirmPassword"
             placeholder="Confirm password"
             {...register("confirmPassword")}
-            required
+      
           />
+          <p>{errors.confirmPassword && "Passwords should match"}</p>
         </div>
 
         <button type="submit" className="btn btn-primary mb-5">

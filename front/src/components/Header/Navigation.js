@@ -22,12 +22,13 @@ const Navigation = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light mb-3">
+      <nav className="navbar navbar-expand-md navbar-light mb-3">
+      <div className="container px-4 px-lg-5 justify-content-sm-center">
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup"
           aria-expanded="false"
           aria-label="Toggle navigation"
@@ -76,6 +77,9 @@ const Navigation = () => {
           
           </div>
         </div>
+
+
+</div>
       </nav>
     </div>
   );

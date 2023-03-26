@@ -5,7 +5,7 @@ import { UserModel } from "../models/User.js";
 // import loginSchema from "../validation/LoginValidation.js";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import {validateLogin} from "../middleware/validator.js"
+import {validateLogin} from "../middleware/registrationValidator.js"
 dotenv.config();
 
 const router = express.Router();
