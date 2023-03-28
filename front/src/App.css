@@ -1,8 +1,6 @@
 .App {
   text-align: center;
   
-
-  
 }
 
 .logo {
@@ -76,4 +74,61 @@
 #user_name {
   color: rgb(47, 255, 85);
   font-size: 1.2rem;
+}
+
+.err_msg {
+  color: red;
+  font-size: 10px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  text-align: start;
+}
+
+.badge_cart {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.single_product_container {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 5rem;
+}
+
+.single_product_container img {
+  width: 300px;
+}
+
+.product_desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+}
+
+.product_p {
+  font-style: italic;
+  padding-left: 3px;
+  color: rgb(80, 80, 80);
+}
+
+.product_price {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding-left: 5px;
+}
+
+.product_name {
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.product_quantity {
+  padding-left: 5px;
+  margin-left: 3px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
 }

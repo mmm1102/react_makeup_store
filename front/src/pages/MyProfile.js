@@ -41,11 +41,12 @@ const MyProfile = () => {
     }
   };
   return (
+    <div className="content d-flex justify-content-sm-center">
     <div>
       <h3 className="mb-3">My Profile</h3>
       <p>Hello <span id="user_name">{user.username}</span></p>
       <div>
-        <button className="btn btn-outline-warning mb-4">
+        <button className="btn btn-warning mb-4">
           {" "}
           <NavLink className="nav-item nav-link" to="/cart">
             Edit your cart <FontAwesomeIcon icon={faCartShopping} />
@@ -101,6 +102,7 @@ const MyProfile = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 };

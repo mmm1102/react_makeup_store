@@ -5,11 +5,11 @@ const validator = (schema) => (payload) => schema.validate(payload, {
 })
 
 const loginSchema = Joi.object({
-  firstName:Joi.string().min(3).max(12).required(),
-  lastName:Joi.string().min(3).max(12).required(),
+  firstName:Joi.string().min(2).max(25).required(),
+  lastName:Joi.string().min(2).max(25).required(),
   email:Joi.string().email().required(),
-  username:Joi.string().min(3).max(12).required(),
-  password:Joi.string().min(3).max(10).required(),
+  username:Joi.string().min(5).max(20).required(),
+  password:Joi.string().min(8).max(20).required(),
   confirmPassword:Joi.ref('password'),
 })
 

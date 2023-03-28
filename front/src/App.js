@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <div className="content container d-flex justify-content-sm-center">
+        <div className="">
         <Routes>
        
        
@@ -32,7 +32,7 @@ function App() {
           <Route path="/admin_dashboard" element={<AdminDashboard></AdminDashboard>}></Route>
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/my_profile" element={<MyProfile></MyProfile>}></Route>
-          <Route path="/product_details" element={<ProductDetails></ProductDetails>}></Route>
+          <Route path="/product/:id" element={<ProductDetails></ProductDetails>}></Route>
         </Routes>
         </div>
         {/* <Main /> */}

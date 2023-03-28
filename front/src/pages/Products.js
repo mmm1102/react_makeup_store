@@ -2,14 +2,14 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, removeFromCart } from "../redux/reducers/cartSlice";
+import { addProduct, removeFromCart } from "../redux/reducers/cartSlice";
+
 import axios from "axios";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const { cartItems } = useSelector((state) => state.cart);
-  const broj = cartItems.length;
-  const dispatch = useDispatch();
+
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,58 +19,41 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const item = { ...products };
-
-  const handleAddToCart = () => {
-    dispatch(addToCart(item));
+  const handleClick = () => {
+    // dispatch(addProduct({products, quantity, price: products.price*quantity}))
   };
   return (
+    <div className="content d-flex justify-content-sm-center">
     <section className="py-5">
-      <p>{broj}</p>
+      {/* <p>{quantity}</p> */}
       <div className="container px-4 px-lg-5 mt-2">
         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
           {products.map((e) => {
             return (
-              <div className="col mb-4">
-                <div className="card h-100 text-truncate" key={e._id}>
+              <div className="col mb-4" key={e._id}>
+                <div className="card h-100 text-truncate">
                   <img
                     className="card-img-top w-75 mx-auto"
                     src={e.img}
                     alt={e.productName}
                   />
-                  <div className="card-body p-0" key={e.id}>
+                  <div className="card-body p-0">
                     <div className="text-center">
-                      <h6 className="mt-2" key={e.id}>
-                        {" "}
-                        {e.productName}
-                      </h6>
+                      <h6 className="mt-2"> {e.productName}</h6>
                     </div>
-                    <p className="card-text mb-0" key={e.id}></p>
-                    <p className="card-text mb-1" key={e.id}>
-                      {e.brand}
-                    </p>
-                    <p className="card-text mb-1" key={e.id}>
-                      {e.category}
-                    </p>
-                    <p className="card-text mb-1" key={e.id}>
-                      {e.price}$
-                    </p>
+                    <p className="card-text mb-0"></p>
+                    <p className="card-text mb-1">{e.brand}</p>
+                    <p className="card-text mb-1">{e.category}</p>
+                    <p className="card-text mb-1">{e.price}$</p>
                     <div className="card-footer p-1 pt-0 border-top-0 bg-transparent">
                       <div className="text-center">
-                        <button
-                          className="btn btn-primary mt-auto"
-                          onClick={handleAddToCart}
-                        >
-                          {" "}
-                          Add to cart
-                        </button>
-                        <button className="btn btn-outline-primary ms-1">
+                        <button className="btn btn-outline-primary ms-1 mb-1 btn-sm">
                           {" "}
                           <NavLink
                             className="nav-item nav-link"
-                            to="/product_details"
+                            to={`/product/${e._id}`}
                           >
-                            Show more
+                            View product{" "}
                           </NavLink>
                         </button>
                       </div>
@@ -83,6 +66,7 @@ const Products = () => {
         </div>
       </div>
     </section>
+    </div>
   );
 };
 

@@ -31,6 +31,7 @@ const Login = () => {
   };
 
   return (
+    <div className="content d-flex justify-content-sm-center">
     <div className="col-md-4">
       <h3 className="mb-4">Log in</h3>
       <div>
@@ -63,6 +64,7 @@ const Login = () => {
           Log in
         </button>
       </div>
+    </div>
     </div>
   );
 };

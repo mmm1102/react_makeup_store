@@ -37,16 +37,46 @@ res.json(response);
 })
 
 //show one product
-router.get("/:id", async (req, res) => {
-  const {id} = req.params;
+router.get("/find/:id", async (req, res) => {
+  // const {id} = req.params;
   try {
-    // if (!mongoose.Types.ObjectId.isValid(id)) {
-    //   return res.status(404).json({ message: `No product exist with id: ${id}` });
-    // }
-   const product =  await ProductModel.findById(id);
+
+   const product =  await ProductModel.findById(req.params.id);
     res.status(200).json(product);
   } catch (err) {
     res.status(404).json({ message: "Something went wrong" });
+  }
+})
+
+//upload product
+router.post("/upload_product", async (req, res) => {
+  const {productName, brand, category, price, img} = req.body;
+
+  //ovde ce joi validacija
+  // const {error, value} = validateLogin(req.body)
+  // if(error){
+  //   console.log(error);
+  //   return res.send(error.details)
+  // }
+
+  try {
+    const product = await ProductModel.findOne({productName});
+    if (product) {
+      return res.status(400).json({ message: "Product already exist"})
+    }
+    const newProduct = new ProductModel({
+      productName,
+      brand,
+      category,
+      price,
+      img
+    });
+
+    await newProduct.save();
+    res.status(201).json({message: "New product added to database"});
+  }catch (err) {
+    res.status(500).json({ message: "Something wend wrong"});
+    console.log(err);
   }
 })
 
