@@ -117,7 +117,7 @@
 
 .product_price {
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding-left: 5px;
 }
 
@@ -131,4 +131,36 @@
   margin-left: 3px;
   margin-bottom: 1rem;
   border-radius: 8px;
+}
+
+.quantity_input_left {
+  margin-right: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.quantity_input_right {
+  margin-left: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.quantity_number {
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid rgb(8, 113, 219);
+  padding: 1px 8px;
+  padding-bottom: 3px;
+  border-radius: 8px;
+}
+
+.cart-item {
+  display: flex;
+}
+.product-image img {
+  width: 200px;
+}
+
+.product-title {
+
 }

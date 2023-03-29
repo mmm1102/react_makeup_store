@@ -1,14 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { addProduct, removeFromCart } from "../redux/reducers/cartSlice";
+
 
 import axios from "axios";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-
 
 
   useEffect(() => {

@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct, incrementQuantity, decrementQuantity } from "../../redux/reducers/cartSlice";
+import {
+  addProduct,
+  removeProduct,
+  incrementQuantity,
+  decrementQuantity,
+} from "../../redux/reducers/cartSlice";
 import axios from "axios";
 
 const ProductDetails = () => {
@@ -11,6 +16,8 @@ const ProductDetails = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+
+  const quantityCart = useSelector((state) => state.cart.quantity);
 
   const dispatch = useDispatch();
 
@@ -32,13 +39,16 @@ const ProductDetails = () => {
   };
 
   const handleDecrement = (_id) => {
-    dispatch(decrementQuantity(_id));
+    dispatch(removeProduct({ ...product, quantity }));
   };
 
   const handleIncrement = (_id) => {
-    dispatch(incrementQuantity(_id));
+    dispatch(addProduct({ ...product, quantity }));
   };
-console.log(product)
+
+
+
+  console.log(product);
   return (
     <div>
       <div className="single_product_container">
@@ -52,12 +62,21 @@ console.log(product)
           <p className="product_p">Category: &nbsp;{product.category}</p>
           <p className="product_price">{product.price}$</p>
           <h4>
-            <span onClick={() => handleDecrement(product._id)}>&minus;</span>
-            {quantity}
-            <span onClick={() => handleIncrement(product._id)}>+</span>
+            <span
+              className="quantity_input_left"
+              onClick={() => handleDecrement(product._id)}
+            >
+              &minus;
+            </span>
+            <span className="quantity_number">quantity</span>
+            <span
+              className="quantity_input_right"
+              onClick={() => handleIncrement(product._id)}
+            >
+              +
+            </span>
           </h4>
-
-          <button onClick={handleClick} className=" btn btn-primary">
+          <button onClick={handleClick} className=" btn btn-primary mt-2">
             Add to cart
           </button>
         </div>
