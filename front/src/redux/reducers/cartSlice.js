@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   products: [],
   quantity: 0,
+  total:0
 
 };
 
@@ -16,12 +17,14 @@ export const cartSlice = createSlice({
       );
       if (itemInCart) {
          state.quantity += 1;
+         state.total+=action.payload.price;
        
       
       } else {
        state.products.push({ ...action.payload});
         //  state.products.push(action.payload);
         state.quantity += 1;
+        state.total+=action.payload.price;
      
       }
     },

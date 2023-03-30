@@ -47,8 +47,6 @@ const ProductDetails = () => {
   };
 
 
-
-  console.log(product);
   return (
     <div>
       <div className="single_product_container">

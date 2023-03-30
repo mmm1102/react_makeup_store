@@ -6,18 +6,22 @@ import {
   decrementQuantity,
 } from "../redux/reducers/cartSlice";
 import CartItem from "../components/Main/CartItem";
+import { createSelector } from "@reduxjs/toolkit";
 
 const Cart = () => {
-  
+  const cart = useSelector((state) => state.cart);
+  console.log(cart.quantity);
 
-  if (selectCart.quantity === 0) {
+  let total = cart.total;
+
+  if (cart.quantity === 0) {
     return <h2 className="no-items">No items in cart...</h2>;
   }
 
   return (
     <div>
       <h3>Cart</h3>
-      <p>Total: {}$ </p>
+      <p>Total: {total}$ </p>
     </div>
   );
 };
