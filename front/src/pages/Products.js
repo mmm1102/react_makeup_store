@@ -17,13 +17,9 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  const handleClick = () => {
-    // dispatch(addProduct({products, quantity, price: products.price*quantity}))
-  };
   return (
     <div className="content d-flex justify-content-sm-center">
     <section className="py-5">
-      {/* <p>{quantity}</p> */}
       <div className="container px-4 px-lg-5 mt-2">
         <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
           {products.map((e) => {
@@ -37,12 +33,11 @@ const Products = () => {
                   />
                   <div className="card-body p-0">
                     <div className="text-center">
-                      <h6 className="mt-2"> {e.productName}</h6>
+                      <p className="mt-2"> {e.productName}</p>
                     </div>
-                    <p className="card-text mb-0"></p>
-                    <p className="card-text mb-1">{e.brand}</p>
-                    <p className="card-text mb-1">{e.category}</p>
-                    <p className="card-text mb-1">{e.price}$</p>
+                    <p className="card-text mb-1 brand-p">{e.brand}</p>
+                    <p className="card-text mb-1 category-p">{e.category}</p>
+                    <p className="card-text mb-1 price-p">{e.price}$</p>
                     <div className="card-footer p-1 pt-0 border-top-0 bg-transparent">
                       <div className="text-center">
                         <button className="btn btn-outline-primary ms-1 mb-1 btn-sm">

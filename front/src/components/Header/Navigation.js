@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { useGetUserID } from "../../hooks/useGetUserID";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   const [cookies, setCookies] = useCookies(["access_token"]);
@@ -72,9 +72,15 @@ const Navigation = () => {
                 <></>
               )}
 
-              <NavLink className="nav-item nav-link" to="/cart">
+              <NavLink className="nav-item nav-link cart-pos" to="/cart">
                 Cart &nbsp;
-                <span className="badge bg-primary">{quantityCart}</span>
+                <FontAwesomeIcon
+                className="cart-position"
+                  icon={faCartShopping}
+                  size="xl"
+                  style={{ color: "#0D6EFD" }}
+                />
+                <span className="badge-cart">{quantityCart}</span>
               </NavLink>
             </div>
           </div>

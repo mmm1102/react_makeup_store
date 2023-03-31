@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import MyProfile from "./pages/MyProfile";
 import ProductDetails from "./components/Main/ProductDetails";
+import EditProduct from "./pages/admin/EditProduct"
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -33,6 +34,7 @@ function App() {
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/my_profile" element={<MyProfile></MyProfile>}></Route>
           <Route path="/product/:id" element={<ProductDetails></ProductDetails>}></Route>
+          <Route path="/edit_product/:id" element={<EditProduct></EditProduct>}></Route>
         </Routes>
         </div>
         {/* <Main /> */}

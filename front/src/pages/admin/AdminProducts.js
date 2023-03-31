@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import AddNewProduct from "./AddNewProduct";
+import { NavLink } from "react-router-dom";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,20 @@ const AdminProducts = () => {
       setProducts(res.data);
     };
     fetchProducts();
-  }, []);
+  });
+
+  const RemoveProduct = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5500/products/${id}`
+      );
+      console.log(response.data);
+      alert("Product deleted");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <h5 style={{ color: "dodgerblue", marginTop: "2rem" }}>
@@ -44,13 +58,17 @@ const AdminProducts = () => {
                 </td>
                 <td className="td_btns" key={e.id}>
                   {" "}
-                  <Button variant="outline-warning" className="ms-3">
-                    Edit
-                  </Button>{" "}
+                 
+                    <NavLink to={`/edit_product/${e._id}`}> <Button variant="outline-warning" className="ms-3">Edit</Button>{" "}</NavLink>
+                  
                 </td>
                 <td className="td_btns" key={e.id}>
                   {" "}
-                  <Button variant="outline-danger" className="ms-2">
+                  <Button
+                    onClick={() => RemoveProduct(e._id)}
+                    variant="outline-danger"
+                    className="ms-2"
+                  >
                     Remove
                   </Button>{" "}
                 </td>

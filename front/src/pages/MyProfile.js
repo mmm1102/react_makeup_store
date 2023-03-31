@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useState, useEffect } from "react";
-import { NavLink, useParams, useNavigate, Form } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -9,7 +9,7 @@ import axios from "axios";
 const MyProfile = () => {
   const [user, setUser] = useState({ username: "", password: "", email: "" });
   const { id } = useParams();
-  const navigate = useNavigate();
+
 
   let userID = useGetUserID();
   console.log(userID);

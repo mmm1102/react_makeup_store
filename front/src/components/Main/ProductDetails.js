@@ -2,13 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addProduct,
-  removeProduct,
-  incrementQuantity,
-  decrementQuantity,
-} from "../../redux/reducers/cartSlice";
+import { useDispatch } from "react-redux";
+import { addProduct} from "../../redux/reducers/cartSlice";
 import axios from "axios";
 
 const ProductDetails = () => {
@@ -16,8 +11,6 @@ const ProductDetails = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-
-  const quantityCart = useSelector((state) => state.cart.quantity);
 
   const dispatch = useDispatch();
 
@@ -34,18 +27,18 @@ const ProductDetails = () => {
     getProduct();
   }, [id]);
 
+  // const {_id, productName, brand, category, img, price} = product;
   const handleClick = () => {
-    dispatch(addProduct({ ...product, quantity }));
+    dispatch(addProduct(product));
   };
 
-  const handleDecrement = (_id) => {
-    dispatch(removeProduct({ ...product, quantity }));
-  };
+  // const handleDecrement = (_id) => {
+  //   dispatch(removeProduct({ ...product, quantity }));
+  // };
 
-  const handleIncrement = (_id) => {
-    dispatch(addProduct({ ...product, quantity }));
-  };
-
+  // const handleIncrement = (_id) => {
+  //   dispatch(addProduct({ ...product, quantity }));
+  // };
 
   return (
     <div>
@@ -59,7 +52,7 @@ const ProductDetails = () => {
           </p>
           <p className="product_p">Category: &nbsp;{product.category}</p>
           <p className="product_price">{product.price}$</p>
-          <h4>
+          {/* <h4>
             <span
               className="quantity_input_left"
               onClick={() => handleDecrement(product._id)}
@@ -73,7 +66,7 @@ const ProductDetails = () => {
             >
               +
             </span>
-          </h4>
+          </h4> */}
           <button onClick={handleClick} className=" btn btn-primary mt-2">
             Add to cart
           </button>
