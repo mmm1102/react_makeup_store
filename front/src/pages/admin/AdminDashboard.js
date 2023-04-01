@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import AdminProducts from "./AdminProducts";
-
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAddressCard, faUserXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,14 +15,14 @@ const AdminDashboard = () => {
       setUsers(res.data);
     };
     fetchUsers();
-  });
+  },);
 
   const RemoveUser = async (id) => {
     console.log(id);
     try {
       const res = await axios.delete(`http://localhost:5500/auth/${id}`);
       console.log(res.data);
-      alert("User deleted");
+      toast.success("User removed!");
     } catch (err) {
       console.log(err);
     }

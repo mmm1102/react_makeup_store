@@ -25,6 +25,11 @@ td {
   border: 1px solid black;
 }
 
+.td_name {
+  border: 1px solid black;
+  min-width: 250px;
+}
+
 .td_img {
   width: 80px;
   border: 1px solid black;

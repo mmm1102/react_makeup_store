@@ -4,6 +4,8 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import AddNewProduct from "./AddNewProduct";
 import { NavLink } from "react-router-dom";
+import {  toast } from "react-toastify";
+
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -14,15 +16,16 @@ const AdminProducts = () => {
       setProducts(res.data);
     };
     fetchProducts();
-  });
+  },);
 
-  const RemoveProduct = async (id) => {
+  const removeProduct = async (id) => {
     try {
       const response = await axios.delete(
         `http://localhost:5500/products/${id}`
       );
       console.log(response.data);
-      alert("Product deleted");
+      toast.success("Product removed");
+ 
     } catch (err) {
       console.log(err);
     }
@@ -46,7 +49,9 @@ const AdminProducts = () => {
                 <td className="td_img" key={e.id}>
                   <img src={e.img} alt={e.productName} />
                 </td>
-
+                <td className="td_name" key={e.id}>
+                  {e.productName}
+                </td>
                 <td className="td_info" key={e.id}>
                   {e.brand}
                 </td>
@@ -65,7 +70,7 @@ const AdminProducts = () => {
                 <td className="td_btns" key={e.id}>
                   {" "}
                   <Button
-                    onClick={() => RemoveProduct(e._id)}
+                    onClick={() => removeProduct(e._id)}
                     variant="outline-danger"
                     className="ms-2"
                   >

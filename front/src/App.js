@@ -16,11 +16,15 @@ import Footer from "./components/Footer/Footer";
 import React from "react";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
         <Header />
+        <ToastContainer />
         <div className="">
         <Routes>
        

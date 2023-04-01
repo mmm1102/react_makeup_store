@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -15,13 +16,15 @@ const Register = () => {
   const onFormSubmit = async (data) => {
     try {
       const res = await axios.post("http://localhost:5500/auth/register", data);
-      alert("radi registracija")
-      console.log(res.data); //json poruka sa servera
+      toast.success("Registration succesfull!");
+   
+      console.log(res.data);
       nav("/login");
     } catch (err) {
+      toast.warn("")
       console.error(err);
     }
-    console.log(data); // objekat sa forme
+    console.log(data);
   };
 
 
