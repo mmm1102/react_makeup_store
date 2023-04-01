@@ -40,9 +40,46 @@ const Navigation = () => {
               <NavLink className="nav-item nav-link" to="/">
                 Home
               </NavLink>
-              <NavLink className="nav-item nav-link" to="/products">
-                Products
-              </NavLink>
+              <li class="nav-item dropdown">
+                <NavLink
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  to="/products"
+                >
+                  Products
+                </NavLink>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="
+text-decoration-none" href="#">
+                    <NavLink
+                  className="dropdown-item"
+                
+                  to="/products"
+                >
+                  All products
+                </NavLink>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Another action
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">
+                      Something else here
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
               {!cookies.access_token ? (
                 <>
                   <NavLink className="nav-item nav-link" to="/login">
@@ -75,7 +112,7 @@ const Navigation = () => {
               <NavLink className="nav-item nav-link cart-pos" to="/cart">
                 Cart &nbsp;
                 <FontAwesomeIcon
-                className="cart-position"
+                  className="cart-position"
                   icon={faCartShopping}
                   size="xl"
                   style={{ color: "#0D6EFD" }}
