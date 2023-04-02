@@ -112,7 +112,7 @@ const Register = () => {
           <p className="err_msg">{errors.confirmPassword && "Passwords should match"}</p>
         </div>
 
-        <button type="submit" className="btn btn-primary mb-5">
+        <button type="submit" className="btn-shade mb-5">
           Register
         </button>
       </form>

@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <div className="content d-flex justify-content-sm-center">
       <div className="col-md-4">
-        <h3 className="mb-4">Log in</h3>
+        <h3 className="mb-4">Login</h3>
         <div>
           <div className="mb-3">
             <input
@@ -61,7 +61,7 @@ const Login = () => {
               placeholder="Password (min 8 characters)"
             />
           </div>
-          <button onClick={login} className="btn btn-primary mb-5">
+          <button onClick={login} className="btn-shade mb-5">
             Log in
           </button>
         </div>

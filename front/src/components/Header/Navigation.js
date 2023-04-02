@@ -21,9 +21,9 @@ const Navigation = () => {
   };
 
   return (
-    <div>
+    <div style={{ fontSize:"1.25rem" }}>
       <nav className="navbar navbar-expand-md navbar-light mb-3">
-        <div className="container px-4 px-lg-5 justify-content-sm-center">
+        <div className="container px-4 px-lg-5 justify-content-start">
           <button
             className="navbar-toggler"
             type="button"
@@ -40,50 +40,14 @@ const Navigation = () => {
               <NavLink className="nav-item nav-link" to="/">
                 Home
               </NavLink>
-              <li class="nav-item dropdown">
-                <NavLink
-                  className="nav-link dropdown-toggle"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  to="/products"
-                >
-                  Products
-                </NavLink>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <li>
-                    <a class="
-text-decoration-none" href="#">
-                    <NavLink
-                  className="dropdown-item"
-                
-                  to="/products"
-                >
-                  All products
-                </NavLink>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <NavLink className="nav-item nav-link" to="/products">
+                Products
+              </NavLink>
 
               {!cookies.access_token ? (
                 <>
                   <NavLink className="nav-item nav-link" to="/login">
-                    Log in
+                    Log <span className="title-shade">in</span>
                   </NavLink>
 
                   <NavLink className="nav-item nav-link" to="/register">
@@ -93,7 +57,7 @@ text-decoration-none" href="#">
               ) : (
                 <>
                   <NavLink onClick={logout} className="nav-item nav-link">
-                    Log out
+                    Log <span className="title-shade">out</span>
                   </NavLink>
                   <NavLink className="nav-item nav-link" to="/my_profile">
                     My Profile{" "}
@@ -115,7 +79,7 @@ text-decoration-none" href="#">
                   className="cart-position"
                   icon={faCartShopping}
                   size="xl"
-                  style={{ color: "#0D6EFD" }}
+                  style={{ color: "#efb5a1" }}
                 />
                 <span className="badge-cart">{quantityCart}</span>
               </NavLink>

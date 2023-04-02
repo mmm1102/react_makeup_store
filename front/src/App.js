@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //Components
 import Home from "./pages/Home";
@@ -9,7 +9,6 @@ import Cart from "./pages/Cart";
 import MyProfile from "./pages/MyProfile";
 import ProductDetails from "./components/Main/ProductDetails";
 import EditProduct from "./pages/admin/EditProduct"
-import Search from "./components/Header/Search";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -40,7 +39,6 @@ function App() {
           <Route path="/my_profile" element={<MyProfile></MyProfile>}></Route>
           <Route path="/product/:id" element={<ProductDetails></ProductDetails>}></Route>
           <Route path="/edit_product/:id" element={<EditProduct></EditProduct>}></Route>
-          <Route path="/search" element={<Search></Search>}></Route>
         </Routes>
         </div>
         {/* <Main /> */}

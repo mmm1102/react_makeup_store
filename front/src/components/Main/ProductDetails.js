@@ -67,7 +67,7 @@ const ProductDetails = () => {
               +
             </span>
           </h4> */}
-          <button onClick={handleClick} className=" btn btn-primary mt-2">
+          <button onClick={handleClick} className="btn-shade mt-2">
             Add to cart
           </button>
         </div>
