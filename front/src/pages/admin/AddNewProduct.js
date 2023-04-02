@@ -63,9 +63,9 @@ const AddNewProduct = () => {
 
   return (
     <>
-      <Button variant="outline-success" className="mb-3" onClick={handleShow}>
+      <button style={{border:"1px solid #6DAD9F"}} className="btn-shade mb-3" onClick={handleShow}>
         Add new product
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

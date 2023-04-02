@@ -2,8 +2,8 @@ import { faMinus, faPlus, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import {
-  addProduct,
   removeProduct,
   incrementQuantity,
   decrementQuantity,
@@ -15,12 +15,14 @@ const Cart = (product, quantity) => {
 
   console.log(cart.quantity);
   console.log(cart.products);
-// console.log(cart.total)
-  // let total = cart.total;
 
-  
   if (cart.quantity === 0) {
-    return <h2 className="no-items">No items in cart...</h2>;
+    return (
+      <>
+        <h2 className="no-items">No items in cart...</h2>
+        <NavLink style={{fontSize:"1.2rem", color:"#6DAD9F"}} to="/products">Go to products</NavLink>
+      </>
+    );
   }
 
   const handleIncrement = () => {

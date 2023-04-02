@@ -32,14 +32,14 @@ const AdminDashboard = () => {
   return (
     <div className="content d-flex justify-content-sm-center">
       <div>
-        <h3>Amin Dashboard</h3>
+        <h3>Admin Dashboard</h3>
         <h5>
           Welcome administrator <FontAwesomeIcon icon={faAddressCard} />{" "}
         </h5>
-        <h5 style={{ color: "dodgerblue", margin: "2rem" }}>
+        <h5 style={{ color: "#6DAD9F", margin: "2rem" }}>
           All registered users in app
         </h5>
-        <div className="ispis">
+        <div className="users-render">
           <table>
             <tbody>
               <tr>
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
                 <th className="td_info">Last name</th>
                 <th className="td_email">e-mail</th>
                 <th className="td_info">Username</th>
-                <th className="td_info">Remove customer</th>
+                <th className="td_info">Remove user</th>
               </tr>
             </tbody>
           </table>

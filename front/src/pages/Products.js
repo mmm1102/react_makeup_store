@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "../components/Loader";
 
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
@@ -8,11 +9,13 @@ import axios from "axios";
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [reload, setReload] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await axios.get("http://localhost:5500/products");
       setProducts(res.data);
+      setReload(false);
     };
     fetchProducts();
   }, []);
@@ -26,7 +29,9 @@ const Products = () => {
     });
     setProducts(copyArray);
   };
-
+  if (reload) {
+    return <Loader></Loader>;
+  }
   return (
     <div>
       <div
@@ -34,7 +39,7 @@ const Products = () => {
         justify-content-md-center 
         justify-content-lg-center"
       >
-        <div className="input-group w-50 me-3">
+        <div className="input-group me-3">
           <input
             onChange={(event) => {
               setSearchTerm(event.target.value);
@@ -43,15 +48,14 @@ const Products = () => {
             className="form-control"
             placeholder="Search product..."
           />
-          <button className="btn-shade">
-            <NavLink className="nav-item nav-link" to="/search">
-              Search
-            </NavLink>
-          </button>
         </div>
 
         <div className="input-group">
-          <span class="input-group-text" id="basic-addon1">
+          <span
+            style={{ backgroundColor: "#CFFAF0" }}
+            className="input-group-text"
+            id="basic-addon1"
+          >
             Sort by price
           </span>
           <select

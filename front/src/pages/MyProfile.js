@@ -46,11 +46,11 @@ const MyProfile = () => {
     <div className="content d-flex justify-content-sm-center">
       <div>
         <h3 className="mb-3">My Profile</h3>
-        <p>
+        <h4>
           Hello <span id="user_name">{user.username}</span>
-        </p>
+        </h4>
         <div>
-          <button className="btn btn-warning mb-4">
+          <button className="btn-shade" style={{marginBottom:"1rem"}}>
             {" "}
             <NavLink className="nav-item nav-link" to="/cart">
               Edit your cart <FontAwesomeIcon icon={faCartShopping} />
@@ -102,7 +102,7 @@ const MyProfile = () => {
                 />
                 <label for="email">E-mail</label>
               </div>
-              <button className="btn btn-primary mb-5" type="submit">
+              <button className="btn-shade mb-5" type="submit">
                 Edit Profile
               </button>
             </form>

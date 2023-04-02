@@ -33,7 +33,7 @@ const AdminProducts = () => {
 
   return (
     <div>
-      <h5 style={{ color: "dodgerblue", marginTop: "2rem" }}>
+      <h5 style={{ color: "#6DAD9F", marginTop: "2rem" }}>
         All products in store
       </h5>
       <AddNewProduct></AddNewProduct>

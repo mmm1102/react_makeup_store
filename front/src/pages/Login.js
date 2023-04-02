@@ -24,7 +24,7 @@ const Login = () => {
       if (err.status === 404) {
         toast.warn("User doesn't exist");
       } else {
-        toast.warn("Invalid usrename or password");
+        toast.warn("Invalid username or password");
       }
 
       console.error(err);

@@ -50,7 +50,7 @@ font-size: 2.5rem;
   color: rgba(51, 51, 51, 0.6);
 }
 
-.ispis th,
+.users-render th,
 td {
   border: 1px solid black;
   line-height: 1.5rem;
@@ -102,9 +102,14 @@ td {
 }
 
 .td_btn {
-  border: none;
+  border: 1px solid red;
   border-radius: 12px;
-  background-color: rgb(232, 86, 66);
+  background-color: red;
+  transition: 0.3s;
+  &:hover{
+    background-color: transparent;
+
+  }
 }
 
 .products_table {
@@ -129,8 +134,15 @@ td {
 }
 
 #user_name {
-  color: rgb(47, 255, 85);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  font-style: italic;
+  background: #6DAD9F;
+  font-weight: 700;
+  background: -webkit-linear-gradient(to right, #ffc7b4 0%, #6DAD9F 100%);
+  background: -moz-linear-gradient(to right, #FFDFD4 0%, #6DAD9F 100%);
+  background: linear-gradient(to right, #ffc4b0 0%, #31ad92 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .err_msg {
@@ -281,6 +293,30 @@ padding-right:5px;
   width: 150px;
  
 }
+.spinner-container {
+height: 50vh;
+display: inline-flex;
+}
+
+.spinner {
+  margin: auto;
+  display: flex;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 11.5px solid;
+  border-color: #F3D8CF;
+  border-right-color: #cffaf0;
+  animation: spinner-d3wgkg 1.2s infinite linear;
+ 
+}
+
+@keyframes spinner-d3wgkg {
+  to {
+     transform: rotate(1turn);
+  }
+}
+
 
 /* footer */
 
