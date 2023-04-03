@@ -3,14 +3,20 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { addProduct} from "../../redux/reducers/cartSlice";
+import { addProduct } from "../../redux/reducers/cartSlice";
 import axios from "axios";
 
+import Modal from "react-bootstrap/Modal";
+
+
 const ProductDetails = () => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
 
@@ -26,22 +32,38 @@ const ProductDetails = () => {
   useEffect(() => {
     getProduct();
   }, [id]);
-
-  // const {_id, productName, brand, category, img, price} = product;
   const handleClick = () => {
     dispatch(addProduct(product));
   };
 
-  // const handleDecrement = (_id) => {
-  //   dispatch(removeProduct({ ...product, quantity }));
-  // };
-
-  // const handleIncrement = (_id) => {
-  //   dispatch(addProduct({ ...product, quantity }));
-  // };
-
   return (
     <div>
+
+<button style={{border:"1px solid #6DAD9F"}} className="btn-shade mb-3" onClick={handleShow}>
+        Add new product
+      </button>
+
+      <Modal show={show} onHide={handleClose}   size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered>
+     
+        <Modal.Body>
+        <img src={product.img} alt={product.productName} style={{width:"600px"}} />
+              
+            
+           
+
+     
+              
+           
+            <button variant="secondary" onClick={handleClose}>
+              Close
+            </button>
+      
+        </Modal.Body>
+      </Modal>
+
+    
       <div className="single_product_container">
         <img src={product.img} alt={product.productName} />
         <div className="product_desc">
@@ -52,21 +74,6 @@ const ProductDetails = () => {
           </p>
           <p className="product_p">Category: &nbsp;{product.category}</p>
           <p className="product_price">{product.price}$</p>
-          {/* <h4>
-            <span
-              className="quantity_input_left"
-              onClick={() => handleDecrement(product._id)}
-            >
-              &minus;
-            </span>
-            <span className="quantity_number">quantity</span>
-            <span
-              className="quantity_input_right"
-              onClick={() => handleIncrement(product._id)}
-            >
-              +
-            </span>
-          </h4> */}
           <button onClick={handleClick} className="btn-shade mt-2">
             Add to cart
           </button>

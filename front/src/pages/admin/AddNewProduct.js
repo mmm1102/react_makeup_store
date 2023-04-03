@@ -10,9 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 const AddNewProduct = () => {
   const nav = useNavigate();
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  
   const [productName, setProductName] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");

@@ -11,10 +11,10 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, { payload }) => {
-      const itemExist = state.products.find(
+      const isItemExist = state.products.find(
         (item) => item._id === payload._id
       );
-      if (!itemExist) {
+      if (!isItemExist) {
         state.products = [...state.products, { ...payload, quantity: 1 }];
       } else {
         state.products = state.products.map((item) => {
@@ -48,26 +48,7 @@ export const cartSlice = createSlice({
       state.quantity++;
       state.total += payload.price;
     },
-
-    // incrementQuantity: (state, { payload }) => {
-    //   state.products = state.products.map((item) => {
-    //     return { ...item, quantity: item.quantity + 1 };
-    //   });
-    //   state.quantity++;
-    //   state.total += payload.price;
-    // },
-
-    // incrementQuantity: (state, { payload }) => {
-    //   state.products = state.products.map((item) => {
-    //     if (item._id === payload._id) {
-    //       return { ...item, quantity: item.quantity + 1 };
-    //     } else {
-    //       return item;
-    //     }
-    //   });
-    //   state.quantity++;
-    //   state.total += payload.price;
-    // },
+    
     decrementQuantity: (state, { payload }) => {
       const decrementItem = state.products.find(
         (item) => item._id === payload._id

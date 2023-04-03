@@ -10,7 +10,7 @@ const Header = () => {
       </p>
       <div className=" container d-flex justify-content-around align-items-center">
         <Logo />
-        <h1 id="store-title">Make<span className="title-shade">up</span> Store</h1>
+        <h1 id="store-title">Make<span className="title-shade" style={{color:"#F5CFC3"}}>up</span> Store</h1>
       </div>
       <Navigation />
     </div>

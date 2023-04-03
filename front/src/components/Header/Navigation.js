@@ -73,15 +73,17 @@ const Navigation = () => {
                 <></>
               )}
 
-              <NavLink className="nav-item nav-link cart-pos" to="/cart">
+              <NavLink className="nav-item nav-link " to="/cart">
                 Cart &nbsp;
+                <div className="cart-pos">
                 <FontAwesomeIcon
-                  className="cart-position"
+              
                   icon={faCartShopping}
                   size="xl"
                   style={{ color: "#efb5a1" }}
                 />
                 <span className="badge-cart">{quantityCart}</span>
+                </div>
               </NavLink>
             </div>
           </div>

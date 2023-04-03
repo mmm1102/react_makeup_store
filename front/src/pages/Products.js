@@ -63,7 +63,8 @@ const Products = () => {
             className="form-select w-25"
             id="sort"
           >
-            <option value={0} selected>
+          <option defaultValue>Sort</option>
+            <option value={0}>
               Low to high
             </option>
             <option value={1}>High to low</option>
@@ -91,11 +92,17 @@ const Products = () => {
                   return (
                     <div className="col mb-4" key={val._id}>
                       <div className="card h-100 text-truncate">
-                        <img
+                      <NavLink
+                                  className="nav-item nav-link"
+                                  to={`/product/${val._id}`}
+                                >
+                                  <img
                           className="card-img-top w-75 mx-auto"
                           src={val.img}
                           alt={val.productName}
                         />
+                                </NavLink>
+                     
                         <div className="card-body p-0">
                           <div className="text-center">
                             <p className="mt-2"> {val.productName}</p>
