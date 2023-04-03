@@ -4,12 +4,10 @@ import { toast } from "react-toastify";
 import FileBase from "react-file-base64";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import schema from "../../validation/addProductValidation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import schema from "../../validation/addProductValidation";
 
 const AddNewProduct = () => {
-  const nav = useNavigate();
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -69,7 +67,7 @@ const AddNewProduct = () => {
         Add new product
       </button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{fontFamily:"Montserrat"}}>
         <Modal.Header closeButton>
           <Modal.Title>Add new product</Modal.Title>
         </Modal.Header>
@@ -130,12 +128,12 @@ const AddNewProduct = () => {
                 onChange={(e) => handleFileUpload(e)}
               />
             </div>
-            <button onClick={postProduct} className="btn btn-primary me-2">
+            <button onClick={postProduct} className="btn-shade me-2">
               Save Changes
             </button>
-            <Button variant="secondary" onClick={handleClose}>
+            <button className="btn-shade" style={{backgroundColor:"transparent"}} onClick={handleClose}>
               Close
-            </Button>
+            </button>
           </div>
         </Modal.Body>
       </Modal>

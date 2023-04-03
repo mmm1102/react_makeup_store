@@ -5,11 +5,6 @@ import CartItem from "../components/Main/CartItem";
 const Cart = () => {
   const { products, quantity, total } = useSelector((state) => state.cart);
 
-  // const cart = useSelector((state) => state.cart);
-
-  // console.log(cart.quantity);
-  // console.log(cart.products);
-
   if (quantity === 0) {
     return (
       <>
@@ -27,8 +22,8 @@ const Cart = () => {
   return (
     <div>
       <h3>Cart</h3>
-      <p>Total: {total}$ </p>
-      <p>Number of products in cart: {quantity}</p>
+      <p style={{fontSize:"1.2rem"}}>Total: {total}$ </p>
+      <p>Products in cart: {quantity}</p>
       {products.map((e) => (
         <CartItem key={e._id} {...e} />
       ))}

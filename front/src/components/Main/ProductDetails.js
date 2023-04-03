@@ -1,13 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../redux/reducers/cartSlice";
 import axios from "axios";
 
 import Modal from "react-bootstrap/Modal";
-
 
 const ProductDetails = () => {
   const [show, setShow] = useState(false);
@@ -34,38 +33,41 @@ const ProductDetails = () => {
   }, [id]);
   const handleClick = () => {
     dispatch(addProduct(product));
+    toast.success("Added to cart");
   };
 
   return (
     <div>
-
-<button style={{border:"1px solid #6DAD9F"}} className="btn-shade mb-3" onClick={handleShow}>
-        Add new product
-      </button>
-
-      <Modal show={show} onHide={handleClose}   size="lg"
-      aria-labelledby="contained-modal-title-vcenter"
-      centered>
-     
+      <Modal
+        show={show}
+        onHide={handleClose}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
         <Modal.Body>
-        <img src={product.img} alt={product.productName} style={{width:"600px"}} />
-              
-            
-           
+          <img
+            src={product.img}
+            alt={product.productName}
+            style={{ width: "450px", display:"block", margin:"0 auto" }}
+          />
 
-     
-              
-           
-            <button variant="secondary" onClick={handleClose}>
-              Close
-            </button>
-      
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "white",
+            fontFamily:"italiana"
+            }}
+            onClick={handleClose}
+          >
+            {" "}
+          x
+          </button>
         </Modal.Body>
       </Modal>
 
-    
       <div className="single_product_container">
-        <img src={product.img} alt={product.productName} />
+        <img onClick={handleShow} src={product.img} alt={product.productName} style={{cursor:"pointer"}}/>
         <div className="product_desc">
           <h5 className="product_name">{product.productName}</h5>
           <p className="product_p">
