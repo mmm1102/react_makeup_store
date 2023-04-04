@@ -108,7 +108,7 @@ const EditProduct = () => {
                 />
                 <label htmlFor="price">Price</label>
               </div>
-              <button className="btn btn-primary mb-5" type="submit">
+              <button className="btn-shade mb-5" type="submit">
                 Edit product
               </button>
             </form>

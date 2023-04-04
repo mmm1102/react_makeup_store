@@ -3,20 +3,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import AddNewProduct from "./AddNewProduct";
+import Loader from "../../components/Loader";
 import { NavLink } from "react-router-dom";
-import {  toast } from "react-toastify";
-
+import { toast } from "react-toastify";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
+  const [reload, setReload] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const res = await axios.get("http://localhost:5500/products");
       setProducts(res.data);
+      setReload(false);
     };
     fetchProducts();
-  },);
+  });
 
   const removeProduct = async (id) => {
     try {
@@ -25,11 +27,14 @@ const AdminProducts = () => {
       );
       console.log(response.data);
       toast.success("Product removed");
- 
     } catch (err) {
       console.log(err);
     }
   };
+
+  if (reload) {
+    return <Loader></Loader>;
+  }
 
   return (
     <div>
@@ -63,9 +68,12 @@ const AdminProducts = () => {
                 </td>
                 <td className="td_btns" key={e.id}>
                   {" "}
-                 
-                    <NavLink to={`/edit_product/${e._id}`}> <Button variant="outline-warning" className="ms-3">Edit</Button>{" "}</NavLink>
-                  
+                  <NavLink to={`/edit_product/${e._id}`}>
+                    {" "}
+                    <Button variant="outline-warning" className="ms-3">
+                      Edit
+                    </Button>{" "}
+                  </NavLink>
                 </td>
                 <td className="td_btns" key={e.id}>
                   {" "}

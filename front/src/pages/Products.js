@@ -5,11 +5,19 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import axios from "axios";
+import Pagination from "../components/Pagination";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [reload, setReload] = useState(true);
+
+  //Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage= 8;
+  const lastProductIndex = currentPage * productsPerPage;
+  const firstProductIndex = lastProductIndex - productsPerPage;
+  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,6 +27,8 @@ const Products = () => {
     };
     fetchProducts();
   }, []);
+
+
 
   const onSelectionChange = (e) => {
     const sortDirection = e.target.value;
@@ -32,6 +42,7 @@ const Products = () => {
   if (reload) {
     return <Loader></Loader>;
   }
+
   return (
     <div>
       <div
@@ -63,10 +74,8 @@ const Products = () => {
             className="form-select w-25"
             id="sort"
           >
-          <option defaultValue>Sort</option>
-            <option value={0}>
-              Low to high
-            </option>
+            <option defaultValue>Sort</option>
+            <option value={0}>Low to high</option>
             <option value={1}>High to low</option>
           </select>
         </div>
@@ -76,7 +85,7 @@ const Products = () => {
         <section className="py-5">
           <div className="container px-4 px-lg-5 mt-2">
             <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {products
+              {currentProducts
                 .filter((val) => {
                   if (searchTerm === "") {
                     return val;
@@ -92,17 +101,17 @@ const Products = () => {
                   return (
                     <div className="col mb-4" key={val._id}>
                       <div className="card h-100 text-truncate">
-                      <NavLink
-                                  className="nav-item nav-link"
-                                  to={`/product/${val._id}`}
-                                >
-                                  <img
-                          className="card-img-top w-75 mx-auto"
-                          src={val.img}
-                          alt={val.productName}
-                        />
-                                </NavLink>
-                     
+                        <NavLink
+                          className="nav-item nav-link"
+                          to={`/product/${val._id}`}
+                        >
+                          <img
+                            className="card-img-top w-75 mx-auto"
+                            src={val.img}
+                            alt={val.productName}
+                          />
+                        </NavLink>
+
                         <div className="card-body p-0">
                           <div className="text-center">
                             <p className="mt-2"> {val.productName}</p>
@@ -134,6 +143,12 @@ const Products = () => {
           </div>
         </section>
       </div>
+      <Pagination
+        totalProducts={products.length}
+        productsPerPage={productsPerPage}
+        setCurrentPage={setCurrentPage}
+
+      ></Pagination>
     </div>
   );
 };
