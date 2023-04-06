@@ -11,10 +11,11 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [reload, setReload] = useState(true);
+  const [state, setState] = useState([]);
 
   //Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage= 8;
+  const [productsPerPage] = useState(8);
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
   const currentProducts = products.slice(firstProductIndex, lastProductIndex);
@@ -28,7 +29,11 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-
+  const onSearchChange = (e) => {
+    const kopija = [...products]
+    setSearchTerm(e.target.value);
+    setState(kopija);
+  };
 
   const onSelectionChange = (e) => {
     const sortDirection = e.target.value;
@@ -52,12 +57,11 @@ const Products = () => {
       >
         <div className="input-group me-3">
           <input
-            onChange={(event) => {
-              setSearchTerm(event.target.value);
-            }}
+            onChange={onSearchChange}
             type="text"
             className="form-control"
             placeholder="Search product..."
+            value={searchTerm}
           />
         </div>
 
@@ -81,11 +85,11 @@ const Products = () => {
         </div>
       </div>
 
-      <div className="content d-flex justify-content-sm-center">
+      <div className="content">
         <section className="py-5">
           <div className="container px-4 px-lg-5 mt-2">
-            <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-              {currentProducts
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-xxl-4">
+              {products
                 .filter((val) => {
                   if (searchTerm === "") {
                     return val;
@@ -147,7 +151,6 @@ const Products = () => {
         totalProducts={products.length}
         productsPerPage={productsPerPage}
         setCurrentPage={setCurrentPage}
-
       ></Pagination>
     </div>
   );
