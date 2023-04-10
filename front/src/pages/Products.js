@@ -18,7 +18,7 @@ const Products = () => {
   const [productsPerPage] = useState(8);
   const lastProductIndex = currentPage * productsPerPage;
   const firstProductIndex = lastProductIndex - productsPerPage;
-  const currentProducts = products.slice(firstProductIndex, lastProductIndex);
+ 
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -34,6 +34,10 @@ const Products = () => {
     setSearchTerm(e.target.value);
     setState(kopija);
   };
+
+
+ 
+
 
   const onSelectionChange = (e) => {
     const sortDirection = e.target.value;
@@ -89,18 +93,16 @@ const Products = () => {
         <section className="py-5">
           <div className="container px-4 px-lg-5 mt-2">
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-xxl-4">
-              {products
-                .filter((val) => {
+              {products.filter((val) => {
                   if (searchTerm === "") {
                     return val;
                   } else if (
-                    val.productName
-                      .toLowerCase()
-                      .includes(searchTerm.toLowerCase())
+                    val.productName.toLowerCase().includes(searchTerm.toLowerCase())
                   ) {
                     return val;
                   }
                 })
+                .slice(firstProductIndex, lastProductIndex)
                 .map((val, key) => {
                   return (
                     <div className="col mb-4" key={val._id}>

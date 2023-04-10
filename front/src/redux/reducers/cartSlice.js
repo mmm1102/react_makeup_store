@@ -48,7 +48,7 @@ export const cartSlice = createSlice({
       state.quantity++;
       state.total += payload.price;
     },
-    
+
     decrementQuantity: (state, { payload }) => {
       const decrementItem = state.products.find(
         (item) => item._id === payload._id
@@ -63,18 +63,6 @@ export const cartSlice = createSlice({
       state.quantity--;
       state.total -= decrementItem.price;
     },
-    // removeProduct(state, action) {
-    //   if (state.quantity > 1) {
-    //     state.quantity -= 1;
-    //     state.products = state.products.filter(
-    //       (item) => item._id !== action.payload._id
-    //     );
-    //     state.total -= action.payload.price;
-    //   } else {
-    //     state.quantity = 0;
-    //     state.total = 0;
-    //   }
-    // },
   },
 });
 
