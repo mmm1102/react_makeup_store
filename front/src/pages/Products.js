@@ -36,9 +36,6 @@ const Products = () => {
   };
 
 
- 
-
-
   const onSelectionChange = (e) => {
     const sortDirection = e.target.value;
     const copyArray = [...products];
@@ -98,6 +95,14 @@ const Products = () => {
                     return val;
                   } else if (
                     val.productName.toLowerCase().includes(searchTerm.toLowerCase())
+                  ) {
+                    return val;
+                  } else if (
+                    val.brand.toLowerCase().includes(searchTerm.toLowerCase())
+                  ) {
+                    return val;
+                  } else if (
+                    val.category.toLowerCase().includes(searchTerm.toLowerCase())
                   ) {
                     return val;
                   }
